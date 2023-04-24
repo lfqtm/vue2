@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-bind:placeholder="tips">
+    
+    <img v-bind:src="photo" alt="" style="width: 150px;">
+    <hr>
+
+    <!-- v-bind简写为 ':' -->
+    <input type="text" :placeholder="tips">
+
+    <!-- 插入js -->
+    <hr>
+    <div>{{1+2}}</div>
+    <div :title="'divbox' + index" style="width: 150px; height: 150px; background-color:red;"></div>
+  </div>
+  
+  <script src="./lib/vue-2.6.12.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        tips: '请输入用户名',
+        photo: 'https://static.leetcode.cn/cn-mono-assets/production/assets/logo-dark-cn.4c5e285b.svg',
+        index: 3
+      }
+    })
+  </script>
+</body>
+</html>

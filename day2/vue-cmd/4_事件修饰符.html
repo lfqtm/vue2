@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <a href="https://www.baidu.com" @click="show">跳转到百度首页</a>
+    <br>
+    <a href="https://www.baidu.com" @click.prevent="showPrevent">跳转到百度首页,使用事件修饰符</a>
+
+    <hr>
+
+    <div style="height: 150px; background-color: orange; 
+    padding-left: 100px; line-height: 150px;" @click="divHandler">
+      <button @click="btnHandler">按钮</button>
+      <button @click.stop="btnHandlerPrevent">按钮带事件修饰符</button>
+    </div>
+  </div>
+
+  <script src="./lib/vue-2.6.12.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+      },
+      methods: {
+        show(e) {
+          e.preventDefault() // 阻止默认跳转事件，可以用事件修饰符替换
+          console.log("点击了a标签跳转")
+        },
+        showPrevent() {
+          console.log("点击了a标签跳转")
+        },
+        divHandler() {
+          console.log("divHandler")
+        },
+        btnHandler(e) {
+          e.stopPropagation(); // 阻止事件冒泡，简化为事件修饰符
+          console.log("btnHandler")
+        },
+        btnHandlerPrevent() {
+          console.log("btnHandlerPrevent")
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
